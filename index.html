@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Reyes — Digital Producer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F8F7;
+    --surface: #FFFFFF;
+    --ink: #14161A;
+    --ink-soft: #565B66;
+    --line: #E4E6EA;
+    --accent: #2F5DFF;
+    --accent-soft: #EAEFFF;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(247,248,247,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height: 72px;
+  }
+  .logo{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  .navlinks{
+    display:flex;
+    gap: 32px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .navlinks a:hover{ color: var(--ink); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 120px 0 96px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width: 6px; height:6px;
+    background: var(--accent);
+    border-radius: 50%;
+    display:inline-block;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 780px;
+  }
+  .hero p.lede{
+    margin-top: 24px;
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 560px;
+  }
+
+  /* spec ticker — nods to the fixed dimensions producers live inside */
+  .ticker-row{
+    margin-top: 56px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    padding: 14px 0;
+  }
+  .ticker{
+    display:flex;
+    gap: 40px;
+    white-space: nowrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-soft);
+    animation: scroll 26s linear infinite;
+    width: max-content;
+  }
+  @keyframes scroll{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  section{ padding: 96px 0; }
+  section + section{ border-top: 1px solid var(--line); }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .section-head h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .section-head span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- WORK GRID ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.6s ease forwards;
+  }
+  .card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(20,22,26,0.06);
+  }
+  @keyframes rise{ to{ opacity:1; transform: translateY(0); } }
+
+  .card-media{
+    position: relative;
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .card-media img,
+  .card-media video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-media .dim-badge{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--surface);
+    padding: 5px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+  }
+  .card-media .placeholder-note{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align:center;
+    padding: 16px;
+  }
+  .card-body{ padding: 22px 24px 26px; }
+  .card-tags{
+    display:flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 3px 9px;
+    border-radius: 100px;
+  }
+  .tag.accent{ color: var(--accent); border-color: var(--accent-soft); background: var(--accent-soft); }
+  .card h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .card p{
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items:start;
+  }
+  .about-grid p{
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    max-width: 520px;
+  }
+  .stat-list{ display:flex; flex-direction:column; gap: 20px; }
+  .stat{
+    display:flex;
+    justify-content:space-between;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .stat b{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .contact h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    max-width: 460px;
+    letter-spacing: -0.01em;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    background: var(--ink);
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.15s ease;
+  }
+  .btn:hover{ background: var(--accent); }
+
+  footer{
+    padding: 32px 0 48px;
+    display:flex;
+    justify-content:space-between;
+    font-size: 13px;
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 720px){
+    .grid{ grid-template-columns: 1fr; }
+    .about-grid{ grid-template-columns: 1fr; }
+    .navlinks{ display:none; }
+    .hero{ padding: 88px 0 64px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ticker{ animation: none; }
+    .card{ animation: none; opacity:1; transform:none; }
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">Jordan Reyes</div>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Available for freelance &amp; contract work</div>
+    <h1>Digital producer — I ship websites and banner campaigns that stay on brand and on spec.</h1>
+    <p class="lede">I plan, build, and traffic digital work end to end: from kickoff decks to pixel-perfect ad sets across every size in the spec sheet.</p>
+  </div>
+  <div class="ticker-row">
+    <div class="wrap" style="overflow:hidden; padding:0;">
+      <div class="ticker">
+        <span>300×250</span><span>728×90</span><span>160×600</span><span>320×50</span><span>970×250</span><span>1080×1080</span><span>1200×628</span>
+        <span>300×250</span><span>728×90</span><span>160×600</span><span>320×50</span><span>970×250</span><span>1080×1080</span><span>1200×628</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <span>06 projects</span>
+    </div>
+    <div class="grid">
+
+      <div class="card" style="animation-delay:0.05s">
+        <div class="card-media">
+          <!-- Website screenshot: replace src with your image -->
+          <img src="https://placehold.co/800x500/EAEFFF/2F5DFF?text=Screenshot" alt="Screenshot of project one">
+        </div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag accent">Website</span><span class="tag">Responsive</span></div>
+          <h3>Project title one</h3>
+          <p>One line on the brief, your role, and the result. Swap this for your real project.</p>
+        </div>
+      </div>
+
+      <div class="card" style="animation-delay:0.1s">
+        <div class="card-media">
+          <!-- Banner video: replace src with your file (e.g. videos/banner-728x90.mp4) -->
+          <video autoplay muted loop playsinline poster="https://placehold.co/800x500/EAEFFF/2F5DFF?text=Banner+video">
+            <source src="" type="video/mp4">
+          </video>
+          <span class="dim-badge">728×90</span>
+        </div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag accent">Banner</span><span class="tag">Display</span></div>
+          <h3>Project title two</h3>
+          <p>One line on the brief, your role, and the result. Swap this for your real project.</p>
+        </div>
+      </div>
+
+      <div class="card" style="animation-delay:0.15s">
+        <div class="card-media">
+          <img src="https://placehold.co/800x500/EAEFFF/2F5DFF?text=Screenshot" alt="Screenshot of project three">
+        </div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag accent">Website</span><span class="tag">E-commerce</span></div>
+          <h3>Project title three</h3>
+          <p>One line on the brief, your role, and the result. Swap this for your real project.</p>
+        </div>
+      </div>
+
+      <div class="card" style="animation-delay:0.2s">
+        <div class="card-media">
+          <video autoplay muted loop playsinline poster="https://placehold.co/800x500/EAEFFF/2F5DFF?text=Banner+video">
+            <source src="" type="video/mp4">
+          </video>
+          <span class="dim-badge">300×250</span>
+        </div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag accent">Banner</span><span class="tag">Programmatic</span></div>
+          <h3>Project title four</h3>
+          <p>One line on the brief, your role, and the result. Swap this for your real project.</p>
+        </div>
+      </div>
+
+      <div class="card" style="animation-delay:0.25s">
+        <div class="card-media">
+          <img src="https://placehold.co/800x500/EAEFFF/2F5DFF?text=Screenshot" alt="Screenshot of project five">
+        </div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag accent">Website</span><span class="tag">Landing page</span></div>
+          <h3>Project title five</h3>
+          <p>One line on the brief, your role, and the result. Swap this for your real project.</p>
+        </div>
+      </div>
+
+      <div class="card" style="animation-delay:0.3s">
+        <div class="card-media">
+          <video autoplay muted loop playsinline poster="https://placehold.co/800x500/EAEFFF/2F5DFF?text=Banner+video">
+            <source src="" type="video/mp4">
+          </video>
+          <span class="dim-badge">1080×1080</span>
+        </div>
+        <div class="card-body">
+          <div class="card-tags"><span class="tag accent">Banner</span><span class="tag">Social</span></div>
+          <h3>Project title six</h3>
+          <p>One line on the brief, your role, and the result. Swap this for your real project.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:24px;"><h2>About</h2></div>
+      <p>Write two or three sentences here about your background: how long you've worked as a digital producer, the kinds of teams or clients you've supported, and what you own end to end — strategy, build, trafficking, QA.</p>
+      <p>Add a second short paragraph on how you like to work, or what you're looking for next.</p>
+    </div>
+    <div class="stat-list">
+      <div class="stat"><span>Years producing</span><b>—</b></div>
+      <div class="stat"><span>Sites shipped</span><b>—</b></div>
+      <div class="stat"><span>Banner sets trafficked</span><b>—</b></div>
+      <div class="stat"><span>Based in</span><b>—</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-inner contact">
+    <h2>Have a launch coming up? Let's talk timeline.</h2>
+    <a class="btn" href="mailto:you@example.com">Email me →</a>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 Jordan Reyes</span>
+  <span>LinkedIn — Instagram — Behance</span>
+</footer>
+
+</body>
+</html>
