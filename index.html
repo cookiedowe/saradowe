@@ -103,6 +103,32 @@
     color: var(--ink-soft);
     max-width: 560px;
   }
+  .dict-entry{
+    margin-bottom: 20px;
+  }
+  .dict-entry .word{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+  }
+  .dict-entry .phonetic{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-left: 10px;
+  }
+  .dict-entry .definition{
+    display: block;
+    margin-top: 6px;
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 520px;
+  }
+  .dict-entry .pos{
+    font-style: italic;
+    margin-right: 6px;
+  }
 
   /* spec ticker — nods to the fixed dimensions producers live inside */
   .ticker-row{
@@ -399,7 +425,8 @@
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow">Available for full-time &amp; contract work</div>
-    <h1>Digital producer — I ship websites and banner campaigns that stay on brand and on spec.</h1>
+    <div class="dict-entry"><span class="word">dig·i·tal pro·duc·er</span><span class="phonetic">/ˈdɪdʒɪtl proʊˈduːsər/</span><span class="definition"><span class="pos">noun</span>a manager who oversees the creation, planning, and delivery of digital media projects like websites, banners, apps, videos, and online campaigns</span></div>
+    <h1>I am a digital producer.</h1>
     <p class="lede">I plan, build, and traffic digital work end to end: from kickoff decks to pixel-perfect ad sets across every size in the spec sheet.</p>
   </div>
   <div class="ticker-row">
